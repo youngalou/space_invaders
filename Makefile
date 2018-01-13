@@ -16,9 +16,13 @@ CFLAG = -Wall -Werror -Wextra
 
 NCURS = -lncurses
 
-HPP = space_inv.hpp \
+HPP = 	space_inv.hpp \
+		Game.class.hpp \
+		Player.class.hpp \
 
-SRC = main.cpp \
+SRC = 	Game.class.cpp \
+		Player.class.cpp \
+		main.cpp \
 
 all: $(NAME)
 
