@@ -16,10 +16,9 @@ CFLAG = -Wall -Werror -Wextra
 
 NCURS = -lncurses
 
-HPP = 	FragTrap.hpp \
+HPP = space_inv.hpp \
 
-SRC = 	FragTrap.cpp \
-		main.cpp \
+SRC = main.cpp \
 
 all: $(NAME)
 
