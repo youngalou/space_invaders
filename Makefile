@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lyoung <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/08 10:45:14 by lyoung            #+#    #+#              #
-#    Updated: 2018/01/08 10:45:15 by lyoung           ###   ########.fr        #
+#    Updated: 2018/01/13 14:10:55 by lyoung           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,10 @@ CFLAG = -Wall -Werror -Wextra
 NCURS = -lncurses
 
 HPPFILES =	space_inv.hpp \
-			Game.class.hpp \
-			Player.class.hpp \
+			Asset.class.hpp \
 
 SRCFILES =	main.cpp \
-			Game.class.cpp \
-			Player.class.cpp \
+			Asset.class.cpp \
 
 SRC = $(addprefix src/, $(SRCFILES))
 
