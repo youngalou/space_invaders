@@ -16,13 +16,17 @@ CFLAG = -Wall -Werror -Wextra
 
 NCURS = -lncurses
 
-HPP = 	space_inv.hpp \
-		Game.class.hpp \
-		Player.class.hpp \
+HPPFILES =	space_inv.hpp \
+			Game.class.hpp \
+			Player.class.hpp \
 
-SRC = 	Game.class.cpp \
-		Player.class.cpp \
-		main.cpp \
+SRCFILES =	main.cpp \
+			Game.class.cpp \
+			Player.class.cpp \
+
+SRC = $(addprefix src/, $(SRCFILES))
+
+HPP = $(addprefix includes/, $(HPPFILES))
 
 all: $(NAME)
 

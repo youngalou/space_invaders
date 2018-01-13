@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Player.class.hpp"
+#include "../includes/Player.class.hpp"
 
 Player::Player(void) : ch('M'), HP(100), pos_y(50), pos_x(50)
 {

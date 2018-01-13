@@ -14,6 +14,7 @@
 #define SPACE_INV_H
 
 #include <curses.h>
+#include "Game.class.hpp"
 #include "Player.class.hpp"
 
 # define KEY_W 13
