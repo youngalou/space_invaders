@@ -1,44 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Asset.class.hpp                                    :+:      :+:    :+:   */
+/*   Enemy.class.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnederlo <jnederlo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/13 13:43:55 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/13 18:48:02 by jnederlo         ###   ########.fr       */
+/*   Created: 2018/01/13 14:22:03 by jnederlo          #+#    #+#             */
+/*   Updated: 2018/01/14 10:40:05 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ASSET_H
-#define ASSET_H
-
+#ifndef ENEMY_CLASS_HPP
+# define ENEMY_CLASS_HPP
+#include "Asset.class.hpp"
 #include <curses.h>
 
-class	Asset
-{
-	protected:
-		char	ch;
-		int		pos_y;
-		int		pos_x;
+class Enemy: public Asset{
 
-	public:
-		Asset(void);
-		~Asset(void);
-		Asset(Asset const &obj);
-		Asset&	operator=(Asset const &obj);
+public:
+    Enemy( void );
+    Enemy( int x, int y );
+    ~Enemy( void );
+    Enemy( Enemy const & obj );
+    Enemy & operator=( Enemy const & obj );
+    void    check(WINDOW *win, int y, int x);
+    
+    bool is_alive;
 
-		char	getCh(void);
-		int		getPosY(void);
-		int		getPosX(void);
+private:
+ 
 
-		void	setCh(char ch);
-		void	setPosY(int nb);
-		void	setPosX(int nb);
-		void	setChar(char c);
-		char	getChar(void);
-
-		void	move(WINDOW *win, int y, int x);
 };
+
 
 #endif
