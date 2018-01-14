@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Enemy.class.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnederlo <jnederlo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:22:03 by jnederlo          #+#    #+#             */
-/*   Updated: 2018/01/14 10:40:05 by jnederlo         ###   ########.fr       */
+/*   Updated: 2018/01/14 12:09:51 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ENEMY_CLASS_HPP
 # define ENEMY_CLASS_HPP
+
 #include "Asset.class.hpp"
 #include <curses.h>
 
@@ -23,12 +24,13 @@ public:
     ~Enemy( void );
     Enemy( Enemy const & obj );
     Enemy & operator=( Enemy const & obj );
-    void    check(WINDOW *win, int y, int x);
-    
-    bool is_alive;
+    void    check(WINDOW *win);
+
 
 private:
- 
+    bool _is_alive;
+    bool _move_left;
+    bool _move_right;
 
 };
 

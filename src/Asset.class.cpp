@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 13:49:38 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/14 12:05:02 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 12:11:54 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ Asset&		Asset::operator=(Asset const &obj)
 	return (*this);
 }
 
+char		Asset::getCh(void)
+{
+	return (this->ch);
+}
+
 int			Asset::getPosY(void)
 {
     return (this->pos_y);
@@ -43,6 +48,11 @@ int			Asset::getPosX(void)
     return (this->pos_x);
 }
 
+void		Asset::setCh(char c)
+{
+	this->ch = c;
+}
+
 void        Asset::setPosY(int nb)
 {
     this->pos_y = nb;
@@ -51,16 +61,6 @@ void        Asset::setPosY(int nb)
 void        Asset::setPosX(int nb)
 {
     this->pos_x = nb;
-}
-
-char		Asset::getCh(void)
-{
-	return (this->ch);
-}
-
-void		Asset::setCh(char c)
-{
-	this->ch = c;
 }
 
 void		Asset::move(WINDOW *win, int y, int x)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Asset.class.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnederlo <jnederlo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 13:43:55 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/13 18:48:02 by jnederlo         ###   ########.fr       */
+/*   Updated: 2018/01/14 12:10:20 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,9 @@ class	Asset
 		int		getPosY(void);
 		int		getPosX(void);
 
-		void	setCh(char ch);
+		void	setCh(char c);
 		void	setPosY(int nb);
 		void	setPosX(int nb);
-		void	setChar(char c);
-		char	getChar(void);
 
 		void	move(WINDOW *win, int y, int x);
 };

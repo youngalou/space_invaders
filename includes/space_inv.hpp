@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 11:16:07 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/14 11:20:40 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 12:09:37 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct	s_env
 	Player		*p1;
 	Bullet		bullet[10];
 	Enemy 		enemy[NUM_ENEMIES];
+	int			frame_count;
 }				t_env;
 
 #endif
