@@ -6,7 +6,7 @@
 /*   By: jnederlo <jnederlo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:31:05 by jnederlo          #+#    #+#             */
-/*   Updated: 2018/01/13 19:08:50 by jnederlo         ###   ########.fr       */
+/*   Updated: 2018/01/14 10:41:11 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 
 //DEFUALT CONSTRUCTOR:
-Enemy::Enemy( void ) : Asset(){
-    
+Enemy::Enemy() : Asset(){
+
 }
 
 //DEFUALT CONSTRUCTOR:
@@ -47,5 +47,12 @@ Enemy &Enemy::operator=( Enemy const &obj ){
     this->pos_x = obj.pos_x;
 
     return *this;
+
+}
+
+void    Enemy::check(WINDOW *win, int y, int x){
+    x = NULL;
+    y = NULL;
+    win = NULL;
 
 }
