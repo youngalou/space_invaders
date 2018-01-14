@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 10:39:17 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/14 10:45:22 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 12:06:55 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	init_curses(void)
 	keypad(stdscr, TRUE); //capture special keys
 	nodelay(stdscr, TRUE); //getch will return ERR if key is not ready
 	curs_set(0);
+	start_color();
 }
 
 t_env	*init_env(void)
@@ -39,7 +40,7 @@ void	frame(t_env *env)
 {
 	env->p1->action(env->win, env->bullet, getch());
 	for (int i = 0; i < 10; i++)
-		env->bullet[i].check(env->win, env->p1->getPosY(), env->p1->getPosX());
+		env->bullet[i].check(env->win, env->p1->getPosY() - 1, env->p1->getPosX());
 }
 
 void	display_enemies(t_env *env){
@@ -51,24 +52,13 @@ void	display_enemies(t_env *env){
 				return ;
 			env->enemy[k].setPosY(i);
 			env->enemy[k].setPosX(j);
-			env->enemy[k].setChar('@');
-			mvwaddch(env->win, env->enemy[k].getPosY(), env->enemy[k].getPosX(), env->enemy[k].getChar());
+			env->enemy[k].setCh('@');
+			mvwaddch(env->win, env->enemy[k].getPosY(), env->enemy[k].getPosX(), env->enemy[k].getCh());
 			k++;
 		}
 	}
 	return ;
 }
-
-void	frame(t_env *env, Bullet bullet[BULLETS])
-{
-	env->p1->action(env->win, bullet, getch());
-
-	for (int i = 0; i < BULLETS; i++)
-		bullet[i].check(env->win, env->p1->getPosY(), env->p1->getPosX());
-}
-
-
-
 
 void	run_game(t_env *env)
 {
@@ -78,11 +68,9 @@ void	run_game(t_env *env)
 	display_enemies(env);
 	while (1)
 	{
-		for (int j = 0; j < NUM_ENEMIES; j++)
-			env->enemy[j].move( env->win, env->enemy[j].getPosY(), env->enemy[j].getPosX() + 1);
+		frame(env);
 		now = clock();
 		while ((clock() / CLOCKS_PER_FRAME) == (now / CLOCKS_PER_FRAME))
-		frame(env);
 		wrefresh(env->win); //call this every frame to update window
 	}
 }
