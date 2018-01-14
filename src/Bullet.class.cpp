@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bullet.class.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jnederlo <jnederlo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 16:58:01 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/14 12:16:54 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 13:14:13 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ Bullet&		Bullet::operator=(Bullet const &obj)
 
 void		Bullet::check(WINDOW *win, int p1_y, int p1_x)
 {
+	
 	if (this->spawn)
 	{
 		this->move(win, this->pos_y - 1, this->pos_x);
