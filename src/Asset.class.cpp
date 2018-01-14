@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 13:49:38 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/13 14:33:41 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/13 18:45:25 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,35 @@ Asset::Asset(Asset const &obj)
 Asset&		Asset::operator=(Asset const &obj)
 {
 	this->ch = obj.ch;
-	this->pos = obj.pos;
+	this->pos_y = obj.pos_y;
+	this->pos_x = obj.pos_x;
 	return (*this);
 }
 
-t_ixy		Asset::getPos(void)
+int			Asset::getPosY(void)
 {
-	return (this->pos);
+    return (this->pos_y);
 }
 
-void		Asset::setPos(int y, int x)
+int			Asset::getPosX(void)
 {
-	this->pos.y = y;
-	this->pos.x = x;
+    return (this->pos_x);
 }
 
-void		Asset::move(t_env *env, int y, int x)
+void        Asset::setPosY(int nb)
 {
-	mvwdelch(env->win, this->pos.y, this->pos.x);
-	this->setPos(y, x);
-	mvwaddch(env->win, this->pos.y, this->pos.x, this->ch);
+    this->pos_y = nb;
+}
+
+void        Asset::setPosX(int nb)
+{
+    this->pos_x = nb;
+}
+
+void		Asset::move(WINDOW *win, int y, int x)
+{
+	mvwdelch(win, this->pos_y, this->pos_x);
+	this->setPosY(y);
+	this->setPosX(x);
+	mvwaddch(win, this->pos_y, this->pos_x, this->ch);
 }

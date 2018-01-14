@@ -6,31 +6,37 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 13:43:55 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/13 15:14:24 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/13 18:41:21 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ASSET_H
 #define ASSET_H
 
-#include "space_inv.hpp"
+#include <curses.h>
 
 class	Asset
 {
 	protected:
 		char	ch;
-		t_ixy	pos;
+		int		pos_y;
+		int		pos_x;
 
 	public:
 		Asset(void);
 		~Asset(void);
 		Asset(Asset const &obj);
-
 		Asset&	operator=(Asset const &obj);
-		t_ixy	getPos(void);
-		void	setPos(int y, int x);
 
-		void	move(t_env *env, int y, int x);
+		char	getCh(void);
+		int		getPosY(void);
+		int		getPosX(void);
+
+		void	setCh(char ch);
+		void	setPosY(int nb);
+		void	setPosX(int nb);
+
+		void	move(WINDOW *win, int y, int x);
 };
 
 #endif

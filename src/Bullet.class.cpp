@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 16:58:01 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/13 17:36:04 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/13 18:40:28 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 Bullet::Bullet(void) : Asset()
 {
 	ch = '|';
-	setPos(0, 0);
+	this->setPosY(0);
+	this->setPosX(0);
 	spawn = 0;
 }
 
@@ -31,22 +32,27 @@ Bullet::Bullet(Bullet const &obj)
 Bullet&		Bullet::operator=(Bullet const &obj)
 {
 	this->ch = obj.ch;
-	this->pos = obj.pos;
+	this->pos_y = obj.pos_y;
+	this->pos_x = obj.pos_x;
 	this->spawn = obj.spawn;
 	return (*this);
 }
 
-void		Bullet::check(t_env *env, t_ixy p1_pos)
+void		Bullet::check(WINDOW *win, int p1_y, int p1_x)
 {
 	if (this->spawn)
 	{
-		this->move(env, this->pos.y - 1, this->pos.x);
-		if (this->pos.y <= 0)
+		this->move(win, this->pos_y - 1, this->pos_x);
+		if (this->pos_y <= 0)
 		{
 			this->spawn = 0;
-			this->setPos(p1_pos.y, p1_pos.x);
+			this->setPosY(p1_y);
+			this->setPosX(p1_x);
 		}
 	}
 	else
-		this->setPos(p1_pos.y, p1_pos.x);
+	{
+		this->setPosY(p1_y);
+		this->setPosX(p1_x);
+	}
 }

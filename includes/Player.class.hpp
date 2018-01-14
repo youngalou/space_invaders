@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 11:50:09 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/13 17:37:03 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/13 18:42:26 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 #define PLAYER_H
 
 #include "Asset.class.hpp"
+#include <curses.h>
+
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define KEY_SPACE 32
 
 class	Bullet : public Asset
 {
@@ -25,7 +32,7 @@ class	Bullet : public Asset
 		Bullet(Bullet const &obj);
 		Bullet&	operator=(Bullet const &obj);
 
-		void	check(t_env *env, t_ixy p1_pos);
+		void	check(WINDOW *win, int p1_y, int p1_x);
 };
 
 class	Player : public Asset
@@ -46,7 +53,7 @@ class	Player : public Asset
 		void	setLives(int nb);
 		void	setAmmo(int nb);
 
-		char	action(t_env *env, Bullet bullet[BULLETS], int input);
+		char	action(WINDOW *win, Bullet bullet[10], int input);
 };
 
 #endif
