@@ -6,7 +6,7 @@
 /*   By: jnederlo <jnederlo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 13:49:38 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/13 18:47:40 by jnederlo         ###   ########.fr       */
+/*   Updated: 2018/01/14 10:49:51 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ void        Asset::setPosX(int nb)
     this->pos_x = nb;
 }
 
-char		Asset::getChar(void){
+char		Asset::getCh(void){
 	return (this->ch);
 }
 
-void		Asset::setChar(char c){
+void		Asset::setCh(char c){
 	this->ch = c;
 }
 

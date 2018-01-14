@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jnederlo <jnederlo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 10:39:17 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/14 10:45:22 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 12:06:31 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,19 @@ t_env	*init_env(void)
 
 	env->win = newwin(WIN_H, WIN_W, 0, 0);
 	env->p1 = new Player;
+	env->frame_count = 0;
 	// box(env->win, 0, 0);
 	return (env);
 }
 
 void	frame(t_env *env)
 {
+	env->frame_count++;
 	env->p1->action(env->win, env->bullet, getch());
+	if (env->frame_count % 3 == 0){
+		for (int j = 0; j < NUM_ENEMIES; j++)
+			env->enemy[j].check(env->win);
+		}
 	for (int i = 0; i < 10; i++)
 		env->bullet[i].check(env->win, env->p1->getPosY(), env->p1->getPosX());
 }
@@ -51,24 +57,13 @@ void	display_enemies(t_env *env){
 				return ;
 			env->enemy[k].setPosY(i);
 			env->enemy[k].setPosX(j);
-			env->enemy[k].setChar('@');
-			mvwaddch(env->win, env->enemy[k].getPosY(), env->enemy[k].getPosX(), env->enemy[k].getChar());
+			env->enemy[k].setCh('@');
+			mvwaddch(env->win, env->enemy[k].getPosY(), env->enemy[k].getPosX(), env->enemy[k].getCh());
 			k++;
 		}
 	}
 	return ;
 }
-
-void	frame(t_env *env, Bullet bullet[BULLETS])
-{
-	env->p1->action(env->win, bullet, getch());
-
-	for (int i = 0; i < BULLETS; i++)
-		bullet[i].check(env->win, env->p1->getPosY(), env->p1->getPosX());
-}
-
-
-
 
 void	run_game(t_env *env)
 {
@@ -78,11 +73,10 @@ void	run_game(t_env *env)
 	display_enemies(env);
 	while (1)
 	{
-		for (int j = 0; j < NUM_ENEMIES; j++)
-			env->enemy[j].move( env->win, env->enemy[j].getPosY(), env->enemy[j].getPosX() + 1);
+		frame(env);
+		
 		now = clock();
 		while ((clock() / CLOCKS_PER_FRAME) == (now / CLOCKS_PER_FRAME))
-		frame(env);
 		wrefresh(env->win); //call this every frame to update window
 	}
 }

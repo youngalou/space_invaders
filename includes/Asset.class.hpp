@@ -6,7 +6,7 @@
 /*   By: jnederlo <jnederlo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 13:43:55 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/13 18:48:02 by jnederlo         ###   ########.fr       */
+/*   Updated: 2018/01/14 10:51:29 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,15 @@ class	Asset
 		Asset(Asset const &obj);
 		Asset&	operator=(Asset const &obj);
 
-		char	getCh(void);
+		// char	getCh(void);
 		int		getPosY(void);
 		int		getPosX(void);
 
-		void	setCh(char ch);
+		// void	setCh(char ch);
 		void	setPosY(int nb);
 		void	setPosX(int nb);
-		void	setChar(char c);
-		char	getChar(void);
+		void	setCh(char c);
+		char	getCh(void);
 
 		void	move(WINDOW *win, int y, int x);
 };
