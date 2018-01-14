@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 13:49:38 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/14 12:11:54 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 12:56:46 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void        Asset::setPosX(int nb)
 
 void		Asset::move(WINDOW *win, int y, int x)
 {
-	mvwdelch(win, this->pos_y, this->pos_x);
+	mvwaddch(win, this->pos_y, this->pos_x, ' ');
 	this->setPosY(y);
 	this->setPosX(x);
 	mvwaddch(win, this->pos_y, this->pos_x, this->ch);

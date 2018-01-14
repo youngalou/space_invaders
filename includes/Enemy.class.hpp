@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:22:03 by jnederlo          #+#    #+#             */
-/*   Updated: 2018/01/14 12:09:51 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 12:52:16 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,7 @@ public:
 
 private:
     bool _is_alive;
-    bool _move_left;
-    bool _move_right;
-
+    bool _move_dir;
 };
 
 

@@ -3,26 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   Enemy.class.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnederlo <jnederlo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:31:05 by jnederlo          #+#    #+#             */
-/*   Updated: 2018/01/14 12:05:54 by jnederlo         ###   ########.fr       */
+/*   Updated: 2018/01/14 13:02:36 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Asset.class.hpp"
 #include "../includes/Enemy.class.hpp"
 #include "../includes/space_inv.hpp"
 
-
-
 //DEFUALT CONSTRUCTOR:
 Enemy::Enemy() : Asset(){
-    ch = '@';
+    ch = '#';
     _is_alive = true;
-    _move_left = false;
-    _move_right = true;
-
+    _move_dir = 0;
 }
 
 //DEFUALT CONSTRUCTOR:
@@ -60,19 +55,17 @@ void    Enemy::check(WINDOW *win){
 
 
     if (this->_is_alive){
-        if (this->_move_left == true){
-            if (this->pos_x == 1){
-                this->_move_left = false;
-                this->_move_right = true;
+        if (this->_move_dir){ //move left
+            if (this->pos_x == 2){
+                this->_move_dir = 0;
                 this->move(win, this->pos_y + 3, this->pos_x);
             }
             else
                 this->move(win, this->pos_y, this->pos_x - 1);
         }
-        else if (this->_move_right == true){
-            if (this->pos_x == (WIN_W - 1)){
-                this->_move_left = true;
-                this->_move_right = false;
+        else if (!this->_move_dir){ //move right
+            if (this->pos_x == (WIN_W - 2)){
+                this->_move_dir = 1;
                 this->move(win, this->pos_y + 3, this->pos_x);
             }
             else

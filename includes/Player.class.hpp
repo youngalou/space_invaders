@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 11:50:09 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/13 19:13:24 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 12:13:58 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 class	Bullet : public Asset
 {
 	public:
-		char	spawn;
+		bool	spawn;
 		
 		Bullet(void);
 		~Bullet(void);

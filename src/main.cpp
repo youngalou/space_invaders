@@ -6,14 +6,11 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 10:39:17 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/14 12:09:16 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 13:04:01 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/space_inv.hpp"
-#include "../includes/Asset.class.hpp"
-#include "../includes/Player.class.hpp"
-#include "../includes/Enemy.class.hpp"
 
 void	init_curses(void)
 {
@@ -33,7 +30,7 @@ t_env	*init_env(void)
 	env->win = newwin(WIN_H, WIN_W, 0, 0);
 	env->p1 = new Player;
 	env->frame_count = 0;
-	// box(env->win, 0, 0);
+	box(env->win, 0, 0);
 	return (env);
 }
 
@@ -50,17 +47,15 @@ void	frame(t_env *env)
 }
 
 void	display_enemies(t_env *env){
-	int k = 0;
-	for (int i = 5; i < (WIN_H - 10); i += 2){
-		for(int j = 23; j < (WIN_W - 22); j += 1 ){
-			
-			if (k >= NUM_ENEMIES)
+	int i = 0;
+	for(int col = 11; col < (WIN_W - 11); col += 2 ){
+		for (int row = 5; row < 15; row += 2){
+			if (i >= NUM_ENEMIES)
 				return ;
-			env->enemy[k].setPosY(i);
-			env->enemy[k].setPosX(j);
-			env->enemy[k].setCh('@');
-			mvwaddch(env->win, env->enemy[k].getPosY(), env->enemy[k].getPosX(), env->enemy[k].getCh());
-			k++;
+			env->enemy[i].setPosY(row);
+			env->enemy[i].setPosX(col);
+			mvwaddch(env->win, env->enemy[i].getPosY(), env->enemy[i].getPosX(), env->enemy[i].getCh());
+			i++;
 		}
 	}
 	return ;

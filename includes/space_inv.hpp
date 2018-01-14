@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 11:16:07 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/14 12:09:37 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 13:03:52 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define WIN_H 52
 # define WIN_W 102
 # define BULLETS 10
-# define NUM_ENEMIES 228
+# define NUM_ENEMIES 200
 # define FPS 30
 # define CLOCKS_PER_FRAME (CLOCKS_PER_SEC / FPS)
 
