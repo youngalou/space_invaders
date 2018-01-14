@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 11:16:07 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/13 14:12:54 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/13 17:54:54 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,19 @@
 #define SPACE_INV_H
 
 #include <curses.h>
+#include <ctime>
 
-# define KEY_W 13
-# define KEY_A 0
-# define KEY_S 1
-# define KEY_D 2
-# define KEY_SPACE 49
-# define KEY_ESC 53
-# define KEY_TAB 48
+# define WIN_H 52
+# define WIN_W 102
+# define BULLETS 10
+# define FPS 30
+# define CLOCKS_PER_FRAME (CLOCKS_PER_SEC / FPS)
+
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define KEY_SPACE 32
 
 typedef struct	s_ixy
 {

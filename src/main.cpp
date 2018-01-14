@@ -6,11 +6,13 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 10:39:17 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/13 14:18:16 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/13 17:59:45 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/space_inv.hpp"
+#include "../includes/Asset.class.hpp"
+#include "../includes/Player.class.hpp"
 
 void	init_curses(void)
 {
@@ -24,38 +26,32 @@ void	init_curses(void)
 
 t_env	*init_env(void)
 {
-	t_env	*env;
+	t_env *env = new t_env;
 
-	env = new t_env;
-	env->win = newwin(52, 100, 0, 0);
-	box(env->win, 0, 0);
+	env->win = newwin(WIN_H, WIN_W, 0, 0);
+	// box(env->win, 0, 0);
 	return (env);
 }
 
-// void	process_input(void)
-// {
-// 	int		input;
-
-// 	input = getch();
-// 	if (input == KEY_LEFT)
-// 	{
-// 		mvwdelch(win, p1.getPosY(), p1.getPosX());
-// 		p1.setPosX(p1.getPosX() - 1);
-// 		mvwaddch(win, p1.getPosY(), p1.getPosX(), p1.getCh());
-// 	}
-// 	else if (input == KEY_RIGHT)
-// 	{
-// 		mvwdelch(win, p1.getPosY(), p1.getPosX());
-// 		p1.setPosX(p1.getPosX() + 1);
-// 		mvwaddch(win, p1.getPosY(), p1.getPosX(), p1.getCh());
-// 	}
-// }
+void	frame(t_env *env, Player *p1, Bullet bullet[BULLETS])
+{
+	p1->action(env, bullet, getch());
+	for (int i = 0; i < BULLETS; i++)
+		bullet[i].check(env, p1->getPos());
+}
 
 void	run_game(t_env *env)
 {
-	mvwaddstr(env->win, 25, 43, "SPACE INVADERS");
+	clock_t	now;
+	Player	*p1 = new Player;
+	Bullet 	bullet[10];
+	mvwaddstr(env->win, 25, 44, "SPACE INVADERS");
+	p1->move(env, 50, 50);
 	while (1)
 	{
+		now = clock();
+		while ((clock() / CLOCKS_PER_FRAME) == (now / CLOCKS_PER_FRAME))
+		frame(env, p1, bullet);
 		wrefresh(env->win); //call this every frame to update window
 	}
 }

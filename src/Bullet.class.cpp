@@ -1,52 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Asset.class.cpp                                    :+:      :+:    :+:   */
+/*   Bullet.class.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/13 13:49:38 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/13 14:33:41 by lyoung           ###   ########.fr       */
+/*   Created: 2018/01/13 16:58:01 by lyoung            #+#    #+#             */
+/*   Updated: 2018/01/13 17:36:04 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/Player.class.hpp"
 
-#include "../includes/Asset.class.hpp"
+Bullet::Bullet(void) : Asset()
+{
+	ch = '|';
+	setPos(0, 0);
+	spawn = 0;
+}
 
-Asset::Asset(void)
+Bullet::~Bullet(void)
 {
 }
 
-Asset::~Asset(void)
-{
-}
-
-Asset::Asset(Asset const &obj)
+Bullet::Bullet(Bullet const &obj)
 {
 	*this = obj;
 }
 
-Asset&		Asset::operator=(Asset const &obj)
+Bullet&		Bullet::operator=(Bullet const &obj)
 {
 	this->ch = obj.ch;
 	this->pos = obj.pos;
+	this->spawn = obj.spawn;
 	return (*this);
 }
 
-t_ixy		Asset::getPos(void)
+void		Bullet::check(t_env *env, t_ixy p1_pos)
 {
-	return (this->pos);
-}
-
-void		Asset::setPos(int y, int x)
-{
-	this->pos.y = y;
-	this->pos.x = x;
-}
-
-void		Asset::move(t_env *env, int y, int x)
-{
-	mvwdelch(env->win, this->pos.y, this->pos.x);
-	this->setPos(y, x);
-	mvwaddch(env->win, this->pos.y, this->pos.x, this->ch);
+	if (this->spawn)
+	{
+		this->move(env, this->pos.y - 1, this->pos.x);
+		if (this->pos.y <= 0)
+		{
+			this->spawn = 0;
+			this->setPos(p1_pos.y, p1_pos.x);
+		}
+	}
+	else
+		this->setPos(p1_pos.y, p1_pos.x);
 }

@@ -6,7 +6,7 @@
 #    By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/08 10:45:14 by lyoung            #+#    #+#              #
-#    Updated: 2018/01/13 14:10:55 by lyoung           ###   ########.fr        #
+#    Updated: 2018/01/13 17:36:33 by lyoung           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,12 @@ NCURS = -lncurses
 
 HPPFILES =	space_inv.hpp \
 			Asset.class.hpp \
+			Player.class.hpp \
 
 SRCFILES =	main.cpp \
 			Asset.class.cpp \
+			Player.class.cpp \
+			Bullet.class.cpp \
 
 SRC = $(addprefix src/, $(SRCFILES))
 

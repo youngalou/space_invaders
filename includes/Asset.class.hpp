@@ -6,12 +6,12 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 13:43:55 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/13 14:16:12 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/13 15:14:24 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GAME_H
-#define GAME_H
+#ifndef ASSET_H
+#define ASSET_H
 
 #include "space_inv.hpp"
 
