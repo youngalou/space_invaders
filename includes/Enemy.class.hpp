@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Enemy.class.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnederlo <jnederlo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:22:03 by jnederlo          #+#    #+#             */
-/*   Updated: 2018/01/14 13:15:32 by jnederlo         ###   ########.fr       */
+/*   Updated: 2018/01/14 14:35:45 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ public:
     ~Enemy( void );
     Enemy( Enemy const & obj );
     Enemy & operator=( Enemy const & obj );
-    void    check(WINDOW *win);
 
+    void    check(WINDOW *win);
+    void    status(WINDOW *win);
 
 private:
     bool _is_alive;

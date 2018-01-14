@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 11:50:09 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/14 12:13:58 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 14:01:17 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ class	Bullet : public Asset
 		Bullet&	operator=(Bullet const &obj);
 
 		void	check(WINDOW *win, int p1_y, int p1_x);
+		void	destroy(WINDOW *win);
 };
 
 class	Player : public Asset

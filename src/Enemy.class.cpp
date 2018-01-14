@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Enemy.class.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnederlo <jnederlo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:31:05 by jnederlo          #+#    #+#             */
-/*   Updated: 2018/01/14 13:28:09 by jnederlo         ###   ########.fr       */
+/*   Updated: 2018/01/14 14:49:32 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,6 @@ Enemy &Enemy::operator=( Enemy const &obj ){
 }
 
 void    Enemy::check(WINDOW *win){
-
-    if ((mvwinch(win, this->pos_y+1, this->pos_x) == '|') || mvwinch(win, this->pos_y, this->pos_x) == '|' || mvwinch(win, this->pos_y - 1, this->pos_x) == '|'){
-        this->_is_alive = false;
-        mvwaddch(win, this->pos_y, this->pos_x, ' ');
-    }
     if (this->_is_alive){
         if (this->_move_dir){ //move left
             if (this->pos_x == 2){
@@ -74,5 +69,14 @@ void    Enemy::check(WINDOW *win){
             else
                 this->move(win, this->pos_y, this->pos_x + 1);
         }
+    }
+}
+
+void    Enemy::status(WINDOW *win)
+{
+    if ((mvwinch(win, this->pos_y, this->pos_x) == '|'))
+    {
+        this->_is_alive = false;
+        mvwaddch(win, this->pos_y, this->pos_x, ' ');
     }
 }
