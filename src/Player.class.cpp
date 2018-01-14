@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:04:14 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/13 18:44:50 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/13 19:13:35 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void		Player::setAmmo(int nb)
 	this->ammo = nb;
 }
 
-char		Player::action(WINDOW *win, Bullet bullet[10], int input)
+void		Player::action(WINDOW *win, Bullet bullet[10], int input)
 {
 	
 	if (input == KEY_UP || input == KEY_W)
@@ -72,8 +72,10 @@ char		Player::action(WINDOW *win, Bullet bullet[10], int input)
 		for (int i = 0; i < 10; i++)
 		{
 			if (!bullet[i].spawn)
+			{
 				bullet[i].spawn = 1;
+				return ;
+			}
 		}
 	}
-	return (0);
 }

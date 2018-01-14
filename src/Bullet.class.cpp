@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 16:58:01 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/13 18:40:28 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/13 19:31:26 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void		Bullet::check(WINDOW *win, int p1_y, int p1_x)
 	if (this->spawn)
 	{
 		this->move(win, this->pos_y - 1, this->pos_x);
-		if (this->pos_y <= 0)
+		if (this->pos_y < 0)
 		{
 			this->spawn = 0;
 			this->setPosY(p1_y);

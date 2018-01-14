@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 10:39:17 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/13 18:37:48 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/13 19:16:57 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,24 +34,23 @@ t_env	*init_env(void)
 	return (env);
 }
 
-void	frame(t_env *env, Bullet bullet[BULLETS])
+void	frame(t_env *env)
 {
-	env->p1->action(env->win, bullet, getch());
-	for (int i = 0; i < BULLETS; i++)
-		bullet[i].check(env->win, env->p1->getPosY(), env->p1->getPosX());
+	env->p1->action(env->win, env->bullet, getch());
+	for (int i = 0; i < 10; i++)
+		env->bullet[i].check(env->win, env->p1->getPosY(), env->p1->getPosX());
 }
 
 void	run_game(t_env *env)
 {
 	clock_t	now;
-	Bullet	bullet[BULLETS];
 	mvwaddstr(env->win, 25, 44, "SPACE INVADERS");
 	env->p1->move(env->win, 50, 50);
 	while (1)
 	{
 		now = clock();
 		while ((clock() / CLOCKS_PER_FRAME) == (now / CLOCKS_PER_FRAME))
-		frame(env, bullet);
+		frame(env);
 		wrefresh(env->win); //call this every frame to update window
 	}
 }

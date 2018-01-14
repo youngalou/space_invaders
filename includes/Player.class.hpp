@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 11:50:09 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/13 18:42:26 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/13 19:13:24 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ class	Player : public Asset
 		void	setLives(int nb);
 		void	setAmmo(int nb);
 
-		char	action(WINDOW *win, Bullet bullet[10], int input);
+		void	action(WINDOW *win, Bullet bullet[10], int input);
 };
 
 #endif
