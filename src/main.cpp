@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 10:39:17 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/14 13:08:47 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 13:32:11 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ void	frame(t_env *env)
 {
 	env->frame_count++;
 	env->p1->action(env->win, env->bullet, getch());
+	for (int i = 0; i < 10; i++)
+		env->bullet[i].check(env->win, env->p1->getPosY() - 1, env->p1->getPosX());
 	if (env->frame_count % 3 == 0){
 		for (int j = 0; j < NUM_ENEMIES; j++)
 			env->enemy[j].check(env->win);
 		}
-	for (int i = 0; i < 10; i++)
-		env->bullet[i].check(env->win, env->p1->getPosY() - 1, env->p1->getPosX());
 }
 
 void	display_enemies(t_env *env){

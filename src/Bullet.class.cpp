@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 16:58:01 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/14 13:17:52 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 13:31:47 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ Bullet&		Bullet::operator=(Bullet const &obj)
 
 void		Bullet::check(WINDOW *win, int p1_y, int p1_x)
 {
+	
 	if (this->spawn)
 	{
 		if (mvwinch(win, this->pos_y - 1, this->pos_x) == '#' || this->pos_y < 2)
