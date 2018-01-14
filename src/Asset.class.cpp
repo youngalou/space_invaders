@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Asset.class.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jnederlo <jnederlo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 13:49:38 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/13 18:45:25 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/13 18:47:40 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,14 @@ void        Asset::setPosY(int nb)
 void        Asset::setPosX(int nb)
 {
     this->pos_x = nb;
+}
+
+char		Asset::getChar(void){
+	return (this->ch);
+}
+
+void		Asset::setChar(char c){
+	this->ch = c;
 }
 
 void		Asset::move(WINDOW *win, int y, int x)

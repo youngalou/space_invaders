@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jnederlo <jnederlo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 10:39:17 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/13 18:37:48 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/13 19:57:19 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/space_inv.hpp"
 #include "../includes/Asset.class.hpp"
 #include "../includes/Player.class.hpp"
+#include "../includes/Enemy.class.hpp"
 
 void	init_curses(void)
 {
@@ -34,12 +35,33 @@ t_env	*init_env(void)
 	return (env);
 }
 
+void	display_enemies(t_env *env){
+	int k = 0;
+	for (int i = 5; i < (WIN_H - 10); i += 2){
+		for(int j = 23; j < (WIN_W - 22); j += 1 ){
+			
+			if (k >= NUM_ENEMIES)
+				return ;
+			env->enemy[k].setPosY(i);
+			env->enemy[k].setPosX(j);
+			env->enemy[k].setChar('@');
+			mvwaddch(env->win, env->enemy[k].getPosY(), env->enemy[k].getPosX(), env->enemy[k].getChar());
+			k++;
+		}
+	}
+	return ;
+}
+
 void	frame(t_env *env, Bullet bullet[BULLETS])
 {
 	env->p1->action(env->win, bullet, getch());
+
 	for (int i = 0; i < BULLETS; i++)
 		bullet[i].check(env->win, env->p1->getPosY(), env->p1->getPosX());
 }
+
+
+
 
 void	run_game(t_env *env)
 {
@@ -47,8 +69,11 @@ void	run_game(t_env *env)
 	Bullet	bullet[BULLETS];
 	mvwaddstr(env->win, 25, 44, "SPACE INVADERS");
 	env->p1->move(env->win, 50, 50);
+	display_enemies(env);
 	while (1)
 	{
+		for (int j = 0; j < NUM_ENEMIES; j++)
+			env->enemy[j].move( env->win, env->enemy[j].getPosY(), env->enemy[j].getPosX() + 1);
 		now = clock();
 		while ((clock() / CLOCKS_PER_FRAME) == (now / CLOCKS_PER_FRAME))
 		frame(env, bullet);

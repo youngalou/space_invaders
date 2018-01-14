@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   space_inv.hpp                                      :+:      :+:    :+:   */
+/*   Enemy.class.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnederlo <jnederlo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/13 11:16:07 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/13 19:28:01 by jnederlo         ###   ########.fr       */
+/*   Created: 2018/01/13 14:22:03 by jnederlo          #+#    #+#             */
+/*   Updated: 2018/01/13 18:48:11 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPACE_INV_H
-#define SPACE_INV_H
+#ifndef ENEMY_CLASS_HPP
+# define ENEMY_CLASS_HPP
+#include "Asset.class.hpp"
 
-#include "Player.class.hpp"
-#include "Enemy.class.hpp"
-#include <curses.h>
-#include <ctime>
+class Enemy: public Asset{
 
-# define WIN_H 52
-# define WIN_W 102
-# define BULLETS 10
-# define NUM_ENEMIES 228
-# define FPS 30
-# define CLOCKS_PER_FRAME (CLOCKS_PER_SEC / FPS)
+public:
+    Enemy( void );
+    Enemy( int x, int y );
+    ~Enemy( void );
+    Enemy( Enemy const & obj );
+    Enemy & operator=( Enemy const & obj );
 
-typedef struct	s_env
-{
-	WINDOW		*win;
-	Player		*p1;
-	Enemy 		enemy[NUM_ENEMIES];
-	// Bullet		bullet[BULLETS];
-}				t_env;
+};
+
 
 #endif
