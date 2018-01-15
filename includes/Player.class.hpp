@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 11:50:09 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/14 17:35:16 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 17:47:48 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define KEY_S 115
 # define KEY_D 100
 # define KEY_SPACE 32
+# define KEY_ESC 27
 
 class	Bullet : public Asset
 {
@@ -34,7 +35,7 @@ class	Bullet : public Asset
 		Bullet&	operator=(Bullet const &obj);
 
 		void	check(WINDOW *win, int p1_y, int p1_x);
-		bool	destroy(WINDOW *win);
+		void	destroy(WINDOW *win);
 };
 
 class	Player : public Asset

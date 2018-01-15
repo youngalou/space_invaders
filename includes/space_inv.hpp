@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 11:16:07 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/14 17:36:00 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 17:47:11 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct	s_env
 	size_t		frame_count;
 	int			speed;
 	int			stars[50];
-	int			score;
 }				t_env;
 
 #endif

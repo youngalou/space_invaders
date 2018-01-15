@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 10:39:17 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/14 17:36:16 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 17:49:29 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ t_env	*init_env(void)
 	env->p1 = new Player;
 	env->frame_count = 0;
 	env->speed = 4;
-	env->score = 0;
 	box(env->win, 0, 0);
 	for (int i = 0; i < 50; i++)
 		env->stars[i] = (rand() % 50) + 1;
@@ -48,7 +47,7 @@ void	quit_game(void)
 void	frame(t_env *env)
 {
 	if (!env->p1->action(env->win, env->bullet, getch()))
-		exit(0);
+		quit_game();
 	for (int i = 0; i < 10; i++)
 		env->bullet[i].check(env->win, env->p1->getPosY() - 1, env->p1->getPosX());
 	env->frame_count++;
@@ -61,7 +60,7 @@ void	frame(t_env *env)
 			env->enemy[j].check(env->win);
 	}
 	for (int i = 0; i < 10; i++)
-		env->score += env->bullet[i].destroy(env->win);
+		env->bullet[i].destroy(env->win);
 }
 
 void	init_enemies(t_env *env){
@@ -111,7 +110,7 @@ void	game_start(t_env *env)
 	init_enemies(env);
 }
 
-bool	run_game(t_env *env)
+void	run_game(t_env *env)
 {
 	game_start(env);
 	while (1)
@@ -122,31 +121,16 @@ bool	run_game(t_env *env)
 		clock_t now = clock();
 		while ((clock() / CLOCKS_PER_FRAME) == (now / CLOCKS_PER_FRAME))
 		wrefresh(env->win); //call this every frame to update window
-		if (env->score >= NUM_ENEMIES)
-		{
-			mvwaddstr(env->win, 25, 44, "YOU WIN!");
-			return(1);
-		}
 	}
-	return(0);
 }
 
 int		main(void)
 {
 	t_env	*env;
-	int		win;
 
 	init_curses();
 	env = init_env();
-<<<<<<< HEAD
 	run_game(env);
 	quit_game();
-=======
-	win = run_game(env);
-	if (win)
-		mvwaddstr(env->win, 25, 44, "YOU WIN!");
-	
-	endwin(); //call before exiting to restore term settings
->>>>>>> d5ae1a26faefcecd783eca9834a31f17c89e8a16
 	return (0);
 }
