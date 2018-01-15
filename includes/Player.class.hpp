@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 11:50:09 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/14 17:23:39 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 17:35:16 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@
 class	Bullet : public Asset
 {
 	public:
-		bool	spawn;
+		bool		spawn;
+		static int	score;
 		
 		Bullet(void);
 		~Bullet(void);
@@ -33,7 +34,7 @@ class	Bullet : public Asset
 		Bullet&	operator=(Bullet const &obj);
 
 		void	check(WINDOW *win, int p1_y, int p1_x);
-		void	destroy(WINDOW *win);
+		bool	destroy(WINDOW *win);
 };
 
 class	Player : public Asset
