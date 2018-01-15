@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jnederlo <jnederlo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 10:39:17 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/14 17:49:29 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 17:54:51 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void	frame(t_env *env)
 		env->speed = (rand() % 4) + 1;
 	for (int j = 0; j < NUM_ENEMIES; j++)
 	{
-		env->enemy[j].status(env->win);
+		if (!env->enemy[j].status(env->win))
+			quit_game();
 		if (env->frame_count % env->speed == 0)
 			env->enemy[j].check(env->win);
 	}

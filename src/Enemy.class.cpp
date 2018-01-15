@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Enemy.class.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jnederlo <jnederlo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:31:05 by jnederlo          #+#    #+#             */
-/*   Updated: 2018/01/14 16:36:57 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 17:54:17 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,10 @@ void    Enemy::check(WINDOW *win){
     }
 }
 
-void    Enemy::status(WINDOW *win)
+bool    Enemy::status(WINDOW *win)
 {
+    if (mvwinch(win, this->pos_y, this->pos_x) == 'A')
+        return 0;
     if (mvwinch(win, this->pos_y, this->pos_x) == '|')
         this->_is_alive = false;
     else if (this->_is_alive)
@@ -95,4 +97,5 @@ void    Enemy::status(WINDOW *win)
             }
         }
     }
+    return 1;
 }
