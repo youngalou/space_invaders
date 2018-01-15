@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 11:16:07 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/14 14:25:58 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 16:09:42 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define NUM_ENEMIES 200
 # define FPS 30
 # define CLOCKS_PER_FRAME (CLOCKS_PER_SEC / FPS)
+# define WAIT (CLOCKS_PER_SEC * 2)
 
 typedef struct	s_env
 {

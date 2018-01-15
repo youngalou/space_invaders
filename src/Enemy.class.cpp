@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:31:05 by jnederlo          #+#    #+#             */
-/*   Updated: 2018/01/14 14:49:32 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 16:34:37 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,25 @@ void    Enemy::check(WINDOW *win){
 
 void    Enemy::status(WINDOW *win)
 {
-    if ((mvwinch(win, this->pos_y, this->pos_x) == '|'))
-    {
+    if (mvwinch(win, this->pos_y, this->pos_x) == '|')
         this->_is_alive = false;
-        mvwaddch(win, this->pos_y, this->pos_x, ' ');
+    else if (this->_is_alive)
+    {
+        if (this->_move_dir)
+        {
+            if (mvwinch(win, this->pos_y, this->pos_x - 1) == '|')
+            {
+                this->_is_alive = false;
+                this->move(win, this->pos_y, this->pos_x - 1);
+            }
+        }
+        else if (!this->_move_dir)
+        {
+            if (mvwinch(win, this->pos_y, this->pos_x + 1) == '|')
+            {
+                this->_is_alive = false;
+                this->move(win, this->pos_y, this->pos_x + 1);
+            }
+        }
     }
 }

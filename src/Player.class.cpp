@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:04:14 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/14 12:14:07 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 15:52:59 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 Player::Player(void) : Asset()
 {
 	ch = 'A';
-	setPosY(50);
+	setPosY(49);
 	setPosX(50);
+	setLives(3);
 }
 
 Player::~Player(void)
@@ -41,19 +42,9 @@ int			Player::getLives(void)
 	return (this->lives);
 }
 
-int			Player::getAmmo(void)
-{
-	return (this->ammo);
-}
-
 void		Player::setLives(int nb)
 {
 	this->lives = nb;
-}
-
-void		Player::setAmmo(int nb)
-{
-	this->ammo = nb;
 }
 
 void		Player::action(WINDOW *win, Bullet bullet[10], int input)
@@ -79,3 +70,7 @@ void		Player::action(WINDOW *win, Bullet bullet[10], int input)
 		}
 	}
 }
+
+// void		Player::collision(WINDOW *win)
+// {
+// }

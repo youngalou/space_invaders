@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 10:39:17 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/14 14:51:11 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 16:34:49 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ void	frame(t_env *env)
 	for (int j = 0; j < NUM_ENEMIES; j++)
 	{
 		env->enemy[j].status(env->win);
-		if (env->frame_count % 3 == 0)
+		if (env->frame_count % 5 == 0)
 			env->enemy[j].check(env->win);
 	}
-	// for (int i = 0; i < 10; i++)
-	// 	env->bullet[i].destroy(env->win);
+	for (int i = 0; i < 10; i++)
+		env->bullet[i].destroy(env->win);
 }
 
-void	display_enemies(t_env *env){
+void	init_enemies(t_env *env){
 	int i = 0;
 	for(int col = 11; col < (WIN_W - 11); col += 2 ){
 		for (int row = 5; row < 15; row += 2){
@@ -65,16 +65,25 @@ void	display_enemies(t_env *env){
 	return ;
 }
 
+void	game_start(t_env *env)
+{
+	mvwaddstr(env->win, 25, 44, "SPACE INVADERS");
+	clock_t now = clock();
+	while ((clock() / WAIT) == (now / WAIT))
+		wrefresh(env->win);
+	mvwaddstr(env->win, 25, 44, "              ");
+	box(env->win, 0, 0);
+	env->p1->move(env->win, 49, 50);
+	init_enemies(env);
+}
+
 void	run_game(t_env *env)
 {
-	clock_t	now;
-	mvwaddstr(env->win, 25, 44, "SPACE INVADERS");
-	env->p1->move(env->win, 50, 50);
-	display_enemies(env);
+	game_start(env);
 	while (1)
 	{
 		frame(env);
-		now = clock();
+		clock_t now = clock();
 		while ((clock() / CLOCKS_PER_FRAME) == (now / CLOCKS_PER_FRAME))
 		wrefresh(env->win); //call this every frame to update window
 	}
