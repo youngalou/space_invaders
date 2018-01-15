@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 16:58:01 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/14 16:35:33 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 16:42:04 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void		Bullet::check(WINDOW *win, int p1_y, int p1_x)
 {
 	if (this->spawn)
 	{
-		if (mvwinch(win, this->pos_y - 1, this->pos_x) == '#' || this->pos_y < 3)
+		if (mvwinch(win, this->pos_y - 1, this->pos_x) == '#' || this->pos_y < 1)
 			this->spawn = 0;
 		this->move(win, this->pos_y - 1, this->pos_x);
 	}
@@ -55,7 +55,7 @@ void		Bullet::check(WINDOW *win, int p1_y, int p1_x)
 
 void		Bullet::destroy(WINDOW *win)
 {
-	if (mvwinch(win, this->pos_y, this->pos_x) == '#')
+	if (mvwinch(win, this->pos_y, this->pos_x) == '#' || this->pos_y < 1)
 	{
 		this->spawn = 0;
 		mvwaddch(win, this->pos_y, this->pos_x, ' ');

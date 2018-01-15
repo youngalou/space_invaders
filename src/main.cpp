@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 10:39:17 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/14 16:37:29 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 17:27:30 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,21 @@ t_env	*init_env(void)
 	env->frame_count = 0;
 	env->speed = 4;
 	box(env->win, 0, 0);
+	for (int i = 0; i < 50; i++)
+		env->stars[i] = (rand() % 50) + 1;
 	return (env);
+}
+
+void	quit_game(void)
+{
+	endwin(); //call before exiting to restore term settings
+	exit(0);
 }
 
 void	frame(t_env *env)
 {
-	env->p1->action(env->win, env->bullet, getch());
+	if (!env->p1->action(env->win, env->bullet, getch()))
+		exit(0);
 	for (int i = 0; i < 10; i++)
 		env->bullet[i].check(env->win, env->p1->getPosY() - 1, env->p1->getPosX());
 	env->frame_count++;
@@ -69,6 +78,26 @@ void	init_enemies(t_env *env){
 	return ;
 }
 
+void	background(t_env *env)
+{
+	int		y;
+	int		x;
+	
+	for (int i = 0; i < 50; i++)
+	{
+		y = env->stars[i];
+		x = (i + 1) * 2;
+		if (mvwinch(env->win, y, x) == '.')
+			mvwaddch(env->win, y, x, ' ');
+		if (mvwinch(env->win, y + 1, x) == ' ')
+			mvwaddch(env->win, y + 1, x, '.');
+		if (y > 50)
+			env->stars[i] = 0;
+		else
+			env->stars[i]++;
+	}
+}
+
 void	game_start(t_env *env)
 {
 	mvwaddstr(env->win, 25, 44, "SPACE INVADERS");
@@ -86,7 +115,9 @@ void	run_game(t_env *env)
 	game_start(env);
 	while (1)
 	{
+		background(env);
 		frame(env);
+		box(env->win, 0, 0);
 		clock_t now = clock();
 		while ((clock() / CLOCKS_PER_FRAME) == (now / CLOCKS_PER_FRAME))
 		wrefresh(env->win); //call this every frame to update window
@@ -100,6 +131,6 @@ int		main(void)
 	init_curses();
 	env = init_env();
 	run_game(env);
-	endwin(); //call before exiting to restore term settings
+	quit_game();
 	return (0);
 }

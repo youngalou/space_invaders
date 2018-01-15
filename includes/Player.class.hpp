@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 11:50:09 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/14 15:52:51 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 17:23:39 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,21 +38,13 @@ class	Bullet : public Asset
 
 class	Player : public Asset
 {
-	private:
-		int		lives;
-		// bool	invuln;
-	
 	public:
 		Player(void);
 		~Player(void);
 		Player(Player const &obj);
 		Player&	operator=(Player const &obj);
 
-		int		getLives(void);
-		void	setLives(int nb);
-
-		void	action(WINDOW *win, Bullet bullet[10], int input);
-		// void	collision(WINDOW *win);
+		bool	action(WINDOW *win, Bullet bullet[10], int input);
 };
 
 #endif

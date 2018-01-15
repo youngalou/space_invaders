@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:04:14 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/14 15:52:59 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 17:29:43 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ Player::Player(void) : Asset()
 	ch = 'A';
 	setPosY(49);
 	setPosX(50);
-	setLives(3);
 }
 
 Player::~Player(void)
@@ -37,40 +36,28 @@ Player&		Player::operator=(Player const &obj)
 	return (*this);
 }
 
-int			Player::getLives(void)
+bool		Player::action(WINDOW *win, Bullet bullet[10], int input)
 {
-	return (this->lives);
-}
-
-void		Player::setLives(int nb)
-{
-	this->lives = nb;
-}
-
-void		Player::action(WINDOW *win, Bullet bullet[10], int input)
-{
-	
-	if (input == KEY_UP || input == KEY_W)
+	if (input == KEY_UP)
 		this->move(win, this->pos_y - 1, this->pos_x);
-	else if (input == KEY_DOWN || input == KEY_S)
+	else if (input == KEY_DOWN)
 		this->move(win, this->pos_y + 1, this->pos_x);
-	else if (input == KEY_LEFT || input == KEY_A)
+	else if (input == KEY_LEFT)
 		this->move(win, this->pos_y, this->pos_x - 1);
-	else if (input == KEY_RIGHT || input == KEY_D)
+	else if (input == KEY_RIGHT)
 		this->move(win, this->pos_y, this->pos_x + 1);
-	else if (input == KEY_SPACE || input == KEY_ENTER)
+	else if (input == KEY_SPACE)
 	{
 		for (int i = 0; i < 10; i++)
 		{
 			if (!bullet[i].spawn)
 			{
 				bullet[i].spawn = 1;
-				return ;
+				return (1);
 			}
 		}
 	}
+	else if (input == KEY_HOME)
+		return (0);
+	return (1);
 }
-
-// void		Player::collision(WINDOW *win)
-// {
-// }
