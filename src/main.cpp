@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jnederlo <jnederlo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 10:39:17 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/14 14:51:11 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 15:51:07 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	init_curses(void)
 	nodelay(stdscr, TRUE); //getch will return ERR if key is not ready
 	curs_set(0);
 	start_color();
+	srand(time(NULL));
 }
 
 t_env	*init_env(void)
@@ -30,20 +31,23 @@ t_env	*init_env(void)
 	env->win = newwin(WIN_H, WIN_W, 0, 0);
 	env->p1 = new Player;
 	env->frame_count = 0;
+	env->speed = 4;
 	box(env->win, 0, 0);
 	return (env);
 }
 
 void	frame(t_env *env)
 {
-	env->frame_count++;
 	env->p1->action(env->win, env->bullet, getch());
 	for (int i = 0; i < 10; i++)
 		env->bullet[i].check(env->win, env->p1->getPosY() - 1, env->p1->getPosX());
+	env->frame_count++;
+	if (env->frame_count % 100 == 0)
+		env->speed = (rand() % 4) + 1;
 	for (int j = 0; j < NUM_ENEMIES; j++)
 	{
 		env->enemy[j].status(env->win);
-		if (env->frame_count % 3 == 0)
+		if (env->frame_count % env->speed == 0)
 			env->enemy[j].check(env->win);
 	}
 	// for (int i = 0; i < 10; i++)
