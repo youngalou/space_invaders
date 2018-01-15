@@ -6,7 +6,7 @@
 /*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 11:16:07 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/14 16:09:42 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 16:37:52 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "Enemy.class.hpp"
 #include <curses.h>
 #include <ctime>
+#include <iostream>
 
 # define WIN_H 52
 # define WIN_W 102
@@ -32,7 +33,8 @@ typedef struct	s_env
 	Player		*p1;
 	Bullet		bullet[10];
 	Enemy 		enemy[NUM_ENEMIES];
-	int			frame_count;
+	unsigned long int		frame_count;
+	int			speed;
 }				t_env;
 
 #endif
