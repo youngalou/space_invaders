@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bullet.class.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jnederlo <jnederlo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 16:58:01 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/14 16:35:33 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 17:20:09 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,23 @@ void		Bullet::check(WINDOW *win, int p1_y, int p1_x)
 	}
 }
 
-void		Bullet::destroy(WINDOW *win)
+bool	Bullet::destroy(WINDOW *win)
 {
 	if (mvwinch(win, this->pos_y, this->pos_x) == '#')
 	{
 		this->spawn = 0;
 		mvwaddch(win, this->pos_y, this->pos_x, ' ');
+		return 1;
 	}
 	else if (!this->spawn)
 	{
 		if (mvwinch(win, this->pos_y, this->pos_x) == '|')
+		{
 			mvwaddch(win, this->pos_y, this->pos_x, ' ');
+			if (this->pos_y <= 10)
+				return 0;
+			return 1;
+		}
 	}
+	return 0;
 }

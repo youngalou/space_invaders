@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   space_inv.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jnederlo <jnederlo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 11:16:07 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/14 16:37:52 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 17:06:34 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct	s_env
 	Enemy 		enemy[NUM_ENEMIES];
 	unsigned long int		frame_count;
 	int			speed;
+	int			score;
 }				t_env;
 
 #endif

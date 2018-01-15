@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Player.class.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyoung <lyoung@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jnederlo <jnederlo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 11:50:09 by lyoung            #+#    #+#             */
-/*   Updated: 2018/01/14 15:52:51 by lyoung           ###   ########.fr       */
+/*   Updated: 2018/01/14 17:15:46 by jnederlo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@
 class	Bullet : public Asset
 {
 	public:
-		bool	spawn;
+		bool		spawn;
+		static int	score;
 		
 		Bullet(void);
 		~Bullet(void);
@@ -33,7 +34,7 @@ class	Bullet : public Asset
 		Bullet&	operator=(Bullet const &obj);
 
 		void	check(WINDOW *win, int p1_y, int p1_x);
-		void	destroy(WINDOW *win);
+		bool	destroy(WINDOW *win);
 };
 
 class	Player : public Asset
